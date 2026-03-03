@@ -219,17 +219,17 @@ const timerBar=document.getElementById("timerBar");
 const timerText=document.getElementById("timerText");
 const music=document.getElementById("bgMusic");
 
-let timeLeft=10;
+let timeLeft=20;
 let timer;
 
 function startTimer(){
-  timeLeft=10;
+  timeLeft=20;
   timerBar.style.width="100%";
   timerText.innerText=timeLeft+"s";
   clearInterval(timer);
   timer=setInterval(()=>{
     timeLeft--;
-    timerBar.style.width=(timeLeft*10)+"%";
+    timerBar.style.width=(timeLeft*5)+"%";
     timerText.innerText=timeLeft+"s";
     if(timeLeft<=0){
       nextSlide();
