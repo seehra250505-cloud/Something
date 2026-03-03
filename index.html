@@ -31,7 +31,6 @@ body{
   overflow:hidden;
 }
 
-/* IMAGE */
 .slide img{
   position:absolute;
   width:100%;
@@ -47,7 +46,6 @@ body{
   to{transform:scale(1.03);}
 }
 
-/* TOP MESSAGE */
 .message{
   position:absolute;
   top:80px;
@@ -63,7 +61,6 @@ body{
   z-index:5;
 }
 
-/* BUTTON */
 .nextBtn{
   position:absolute;
   bottom:20px;
@@ -78,7 +75,6 @@ body{
   z-index:6;
 }
 
-/* TIMER BAR */
 .timerContainer{
   position:absolute;
   top:20px;
@@ -110,7 +106,6 @@ body{
   z-index:10;
 }
 
-/* DOTS */
 .dots{
   position:absolute;
   bottom:5px;
@@ -145,7 +140,9 @@ body{
 <div class="slider" id="slider">
 
   <div class="slide">
-    <div class="message">Some harsh reality i need to accept ....ki Kabhi kabhi main aapkai past se compete nahi kar raha hota... main khud se haar raha hota hoon.</div>
+    <div class="message">
+    Some harsh reality i need to accept ....ki Kabhi kabhi main aapkai past se compete nahi kar raha hota... main khud se haar raha hota hoon.
+    </div>
     <button class="nextBtn" onclick="manualNext()">Continue</button>
   </div>
 
@@ -206,11 +203,12 @@ body{
 <div class="timerContainer">
   <div class="timerBar" id="timerBar"></div>
 </div>
-<div class="timerText" id="timerText">10s</div>
+<div class="timerText" id="timerText">20s</div>
 
 <div class="dots" id="dots"></div>
 
 <script>
+
 let index=0;
 const slider=document.getElementById("slider");
 const slides=document.querySelectorAll(".slide");
@@ -223,17 +221,24 @@ let timeLeft=20;
 let timer;
 
 function startTimer(){
-  timeLeft=20;
-  timerBar.style.width="100%";
-  timerText.innerText=timeLeft+"s";
   clearInterval(timer);
-  timer=setInterval(()=>{
+
+  timeLeft=20;
+  timerText.innerText=timeLeft+"s";
+  timerBar.style.width="100%";
+
+  timer=setInterval(function(){
+
     timeLeft--;
-    timerBar.style.width=(timeLeft*5)+"%";
     timerText.innerText=timeLeft+"s";
+
+    let percentage=(timeLeft/20)*100;
+    timerBar.style.width=percentage+"%";
+
     if(timeLeft<=0){
       nextSlide();
     }
+
   },1000);
 }
 
@@ -281,6 +286,7 @@ document.addEventListener("click",()=>{
 },{once:true});
 
 startTimer();
+
 </script>
 
 </body>
